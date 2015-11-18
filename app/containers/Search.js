@@ -19,13 +19,14 @@ export default class Search extends Component {
   }
 
   render () {
-    const { payload, defaultText } = this.props.search
+    const { payload } = this.props.search
+    const { query } = this.props.routeParams
     const { products } = payload || {}
 
     if (products) {
       return (
         <div>
-          <SearchInput handleOnChange={::this.handleOnChange} handleOnSubmit={::this.handleOnSubmit} />
+          <SearchInput defaultValue={query} placeholder='Search for a product or brand' handleOnChange={::this.handleOnChange} handleOnSubmit={::this.handleOnSubmit} />
           <SearchResultList>
             { products.map( (product) => { return <SearchResult key={product.id} {...product} /> }) }
           </SearchResultList>
@@ -34,8 +35,7 @@ export default class Search extends Component {
     } else {
       return (
         <div>
-          <SearchInput handleOnChange={::this.handleOnChange} handleOnSubmit={::this.handleOnSubmit} />
-          {defaultText}
+          <SearchInput placeholder='Search for a product or brand' handleOnChange={::this.handleOnChange} handleOnSubmit={::this.handleOnSubmit} />
         </div>
       )
     }

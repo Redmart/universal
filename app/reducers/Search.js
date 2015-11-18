@@ -40,7 +40,7 @@ export default function search (state = initialState, action = {}) {
 
 
 export function getSearchResultFor(query) {
-  return request('https://api.redmart.com/v1.5.6/catalog/search?q='+query, [
+  return request('https://api.redmart.com/v1.5.6/catalog/search?pageSize=100&q='+query, [
     function () {
       return {
         type: actions.SEARCH_RESULT_LOAD,

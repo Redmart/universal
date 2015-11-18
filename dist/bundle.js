@@ -24460,9 +24460,8 @@
 	  }, {
 	    key: 'render',
 	    value: function render() {
-	      var _props$search = this.props.search;
-	      var payload = _props$search.payload;
-	      var defaultText = _props$search.defaultText;
+	      var payload = this.props.search.payload;
+	      var query = this.props.routeParams.query;
 
 	      var _ref = payload || {};
 
@@ -24472,7 +24471,7 @@
 	        return _react2['default'].createElement(
 	          'div',
 	          null,
-	          _react2['default'].createElement(_componentsSearchInput2['default'], { handleOnChange: this.handleOnChange.bind(this), handleOnSubmit: this.handleOnSubmit.bind(this) }),
+	          _react2['default'].createElement(_componentsSearchInput2['default'], { defaultValue: query, placeholder: 'Search for a product or brand', handleOnChange: this.handleOnChange.bind(this), handleOnSubmit: this.handleOnSubmit.bind(this) }),
 	          _react2['default'].createElement(
 	            _componentsSearchResultList2['default'],
 	            null,
@@ -24485,8 +24484,7 @@
 	        return _react2['default'].createElement(
 	          'div',
 	          null,
-	          _react2['default'].createElement(_componentsSearchInput2['default'], { handleOnChange: this.handleOnChange.bind(this), handleOnSubmit: this.handleOnSubmit.bind(this) }),
-	          defaultText
+	          _react2['default'].createElement(_componentsSearchInput2['default'], { placeholder: 'Search for a product or brand', handleOnChange: this.handleOnChange.bind(this), handleOnSubmit: this.handleOnSubmit.bind(this) })
 	        );
 	      }
 	    }
@@ -25682,7 +25680,7 @@
 	}
 
 	function getSearchResultFor(query) {
-	  return (0, _coreRequest2['default'])('https://api.redmart.com/v1.5.6/catalog/search?q=' + query, [function () {
+	  return (0, _coreRequest2['default'])('https://api.redmart.com/v1.5.6/catalog/search?pageSize=100&q=' + query, [function () {
 	    return {
 	      type: actions.SEARCH_RESULT_LOAD,
 	      query: query
@@ -26212,7 +26210,7 @@
 	  return _react2['default'].createElement(
 	    'form',
 	    { onSubmit: props.handleOnSubmit },
-	    _react2['default'].createElement('input', { type: 'text', placeholder: 'Search now', onChange: props.handleOnChange })
+	    _react2['default'].createElement('input', { type: 'text', defaultValue: props.defaultValue, placeholder: props.placeholder, onChange: props.handleOnChange })
 	  );
 	};
 
@@ -26269,13 +26267,13 @@
 	var Result = function Result(props) {
 	  return _react2['default'].createElement(
 	    'a',
-	    { target: '_blank', href: 'https://redmart.com/product/' + props.details.uri },
+	    { className: 'card', target: '_blank', href: 'https://redmart.com/product/' + props.details.uri },
 	    _react2['default'].createElement(
 	      'p',
 	      null,
 	      props.title
 	    ),
-	    _react2['default'].createElement(_MiscImage2['default'], { src: 'https://s3-ap-southeast-1.amazonaws.com/media.redmart.com/newmedia/65x' + props.img.name, width: '65px', height: '65px' })
+	    _react2['default'].createElement(_MiscImage2['default'], { src: 'https://s3-ap-southeast-1.amazonaws.com/media.redmart.com/newmedia/150x' + props.img.name })
 	  );
 	};
 
@@ -26327,14 +26325,7 @@
 	      var height = _props.height;
 	      var className = _props.className;
 
-	      var isBrowser = this.window == this;
-
-	      if (!isBrowser) {
-	        var _imageClass = this.state.loaded ? 'img img_loaded' : 'img';
-	        return _react2['default'].createElement('img', { onLoad: this.fadeInImageOnLoad.bind(this), style: { width: width, height: height }, className: _imageClass, src: src });
-	      }
-
-	      var imageClass = 'img img_loaded';
+	      var imageClass = this.state.loaded ? 'img img_loaded' : 'img';
 	      return _react2['default'].createElement('img', { onLoad: this.fadeInImageOnLoad.bind(this), style: { width: width, height: height }, className: imageClass, src: src });
 	    }
 	  }, {
