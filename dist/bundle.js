@@ -66,7 +66,6 @@
 
 	var _coreGetStore2 = _interopRequireDefault(_coreGetStore);
 
-	console.log(window.__INITIAL_STATE__);
 	_reactDom2['default'].render((0, _coreGetRootApp.clientSideApp)((0, _coreGetStore2['default'])(window.__INITIAL_STATE__), _routes2['default']), document.getElementById('root'));
 
 /***/ },
@@ -26328,7 +26327,14 @@
 	      var height = _props.height;
 	      var className = _props.className;
 
-	      var imageClass = this.state.loaded ? 'img img_loaded' : 'img';
+	      var isBrowser = this.window == this;
+
+	      if (!isBrowser) {
+	        var _imageClass = this.state.loaded ? 'img img_loaded' : 'img';
+	        return _react2['default'].createElement('img', { onLoad: this.fadeInImageOnLoad.bind(this), style: { width: width, height: height }, className: _imageClass, src: src });
+	      }
+
+	      var imageClass = 'img img_loaded';
 	      return _react2['default'].createElement('img', { onLoad: this.fadeInImageOnLoad.bind(this), style: { width: width, height: height }, className: imageClass, src: src });
 	    }
 	  }, {

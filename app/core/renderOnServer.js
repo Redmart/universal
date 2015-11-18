@@ -14,10 +14,9 @@ function renderOnServer (res, currentUrl, query) {
           loading: false,
           loaded: true,
           query: query,
-          payload: json,
-          defaultText: 'Loaded :)'
+          payload: json
         }
-        res.send(generateInitialHtml(getStore(newState), newState, renderProps))
+        res.send(generateInitialHtml(getStore(newState), getStore(newState).getState(), renderProps))
       })
     } else {
       res.send(generateInitialHtml(getStore(), getStore().getState(), renderProps))
