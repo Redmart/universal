@@ -1,0 +1,40 @@
+{
+  "name": "universal",
+  "version": "1.0.0",
+  "description": "set of libraries patched up together to provide universal javascript helper module",
+  "main": "index.js",
+  "scripts": {
+    "start": "webpack && node index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "sarmadsangi",
+  "license": "MIT",
+  "dependencies": {
+    "babel": "5.8.21",
+    "es6-promise": "^3.0.2",
+    "express": "^4.13.3",
+    "history": "^1.13.1",
+    "isomorphic-fetch": "^2.2.0",
+    "keymirror": "^0.1.1",
+    "lodash": "^3.10.1",
+    "react": "^0.14.2",
+    "react-dom": "^0.14.2",
+    "react-fetcher": "^0.2.0",
+    "react-redux": "^4.0.0",
+    "react-router": "^1.0.0",
+    "redux": "^3.0.4",
+    "redux-actions": "^0.8.0",
+    "redux-catch-promise": "^1.0.3",
+    "redux-promise": "^0.5.0",
+    "redux-promise-middleware": "^2.2.0",
+    "redux-thunk": "^1.0.0",
+    "superagent": "^1.4.0"
+  },
+  "devDependencies": {
+    "babel-core": "~5.8.33",
+    "babel-loader": "~5.3.3",
+    "babel-plugin-react-transform": "~1.1.1",
+    "clean-webpack-plugin": "^0.1.4",
+    "webpack": "^1.12.6"
+  }
+}
