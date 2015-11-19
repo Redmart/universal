@@ -1,4 +1,5 @@
 var Clean = require('clean-webpack-plugin');
+var webpack = require('webpack');
 var path = require('path');
 var assetsPath = path.resolve(__dirname, './dist');
 
@@ -23,6 +24,9 @@ module.exports = {
     extensions: ['', '.json', '.js']
   },
   plugins: [
-    new Clean(['dist'])
+    new Clean(['dist']),
+    new webpack.DefinePlugin({
+      __SERVER__: false
+    })
   ]
 }

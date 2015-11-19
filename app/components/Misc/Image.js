@@ -10,7 +10,8 @@ export default class Image extends Component {
 
   render () {
     const {src, width, height, className} = this.props
-    const imageClass = this.state.loaded ? 'img img_loaded' : 'img'
+
+    const imageClass = 'img img_loaded'
     return <img onLoad={::this.fadeInImageOnLoad} style={{width: width, height: height}} className={imageClass} src={src} />
   }
 

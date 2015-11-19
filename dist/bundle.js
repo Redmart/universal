@@ -26325,7 +26325,7 @@
 	      var height = _props.height;
 	      var className = _props.className;
 
-	      var imageClass = this.state.loaded ? 'img img_loaded' : 'img';
+	      var imageClass = 'img img_loaded';
 	      return _react2['default'].createElement('img', { onLoad: this.fadeInImageOnLoad.bind(this), style: { width: width, height: height }, className: imageClass, src: src });
 	    }
 	  }, {
