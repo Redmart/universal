@@ -1,14 +1,14 @@
 import generateInitialHtml from './generateInitialHtml'
 import getStore from './getStore'
 import routes from '../routes'
-import getInitialState from './getInitialState'
+import fetchSearchTermResult from './fetchSearchTermResult'
 import { match } from 'react-router'
 
 function renderOnServer (res, currentUrl, query) {
   match({ routes, location: currentUrl }, (error, redirectLocation, renderProps) => {
 
     if (query) {
-      getInitialState(query, function (json) {
+      fetchSearchTermResult(query, function (json) {
         const newState = {
           ...getStore().getState(),
           loading: false,
